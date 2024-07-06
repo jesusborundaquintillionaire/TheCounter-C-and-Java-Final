@@ -1,0 +1,23 @@
+public class TheCounter{
+    public static void main (String[] args){
+        Thread contar_arriba = new Thread(() ->{ //count up
+            for(int i = 0; i <=20; i++){
+                System.out.println("Let's count up: " + i); 
+            }
+        });
+        Thread contar_abajo = new Thread(() ->{  //count down
+            for (int i = 20; i >= 0; i--) {
+                System.out.println("Let's count down: " + i);
+            }
+        });
+        
+        contar_arriba.start();
+        try {
+            contar_arriba.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        contar_abajo.start();
+    }
+}        
+        
